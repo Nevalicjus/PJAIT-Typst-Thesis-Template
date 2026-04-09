@@ -118,6 +118,7 @@
     title-pl: "Twój starannie dobrany i ekspresywny tytuł pracy dyplomowej",
     abstract-pl: "Tłumaczenie streszczenia.",
     keywords-pl: "Tłumaczenie słów kluczowych.",
+    highlight-inline-code: true,
 ) = {
     set document(title: title)
 
@@ -162,13 +163,17 @@
     }
 
     show raw.where(block: false): it => {
-        highlight(
-            radius: 2pt,
-            fill: rgb(210, 235, 235, 80),
-            extent: 0.5pt,
-            top-edge: 1em,
-            bottom-edge: -0.25em
-        )[#it]
+        if highlight-inline-code {
+            highlight(
+                radius: 2pt,
+                fill: rgb(210, 235, 235, 80),
+                extent: 0.5pt,
+                top-edge: 1em,
+                bottom-edge: -0.25em
+            )[#it]
+        } else {
+            it
+        }
     }
 
     show raw.where(block: true): set text(size: 0.8em)
