@@ -114,7 +114,7 @@ in your document(s).
 
 ## Documentation for `apply-pjatk-template()` function arguments
 
-> [!INFO]
+> [!NOTE]
 > The university requires theses written in English
 > to meet some additional requirements.
 > Because of this, some arguments may seem duplicated.
