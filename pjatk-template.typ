@@ -122,10 +122,13 @@
 ) = {
     set document(title: title)
 
+    let normalMargins = (top: 1in, bottom: 1.25in, left: 1.75in, right: 1.75in);
+    let printingMargins = (top: 1in, bottom: 1.25in, inside: 2.25in, outside: 1.25in);
+
     let chosenMargins = if for-printing {
-        (top: 1in, bottom: 1.25in, inside: 2.25in, outside: 1.25in)
+        printingMargins
     } else {
-        (top: 1in, bottom: 1.25in, left: 1.75in, right: 1.75in)
+        normalMargins
     }
 
     set page(
@@ -195,31 +198,35 @@
     set math.equation(numbering: "(1)")
 
     context {
-        titlepage(
-            language,
-            chosenMargins,
-            faculty,
-            department,
-            specialization,
-            authors,
-            title,
-            if text.lang == "pl" { supervisor-pl } else { supervisor },
-            if text.lang == "pl" { reviewer-pl } else { reviewer },
-        )
+        [
+            #titlepage(
+                language,
+                normalMargins,
+                faculty,
+                department,
+                specialization,
+                authors,
+                title,
+                if text.lang == "pl" { supervisor-pl } else { supervisor },
+                if text.lang == "pl" { reviewer-pl } else { reviewer },
+            )
+        ]
 
         if text.lang == "en" {
             set text(lang: "pl")
-            titlepage(
-                "pl",
-                chosenMargins,
-                faculty-pl,
-                department-pl,
-                specialization-pl,
-                authors,
-                title-pl,
-                supervisor-pl,
-                reviewer-pl,
-            )
+            [
+                #titlepage(
+                    "pl",
+                    normalMargins,
+                    faculty-pl,
+                    department-pl,
+                    specialization-pl,
+                    authors,
+                    title-pl,
+                    supervisor-pl,
+                    reviewer-pl,
+                )
+            ]
             set text(lang: "en")
         } else {
             [~]
