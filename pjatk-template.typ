@@ -228,15 +228,15 @@
     }
 
     set page(numbering: "1")
-    
+
     import "@preview/codly:1.3.0": *
     import "@preview/codly-languages:0.1.1": *
     show: codly-init.with()
-    
+
     codly(
         zebra-fill: none,
         breakable: true,
-        number-align: right, 
+        number-align: right,
         number-placement: "outside",
         number-format: (n) => text(luma(180))[#str(n)],
         stroke: none,
